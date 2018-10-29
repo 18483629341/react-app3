@@ -2,6 +2,7 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
 import { Form, Icon, Input ,Button,notification ,row,col} from 'antd';
+import { withRouter } from "react-router-dom"; 
 import './index.css';
 const FormItem = Form.Item;
 
@@ -24,7 +25,8 @@ class Login extends React.Component {
 		var psd=this.props.form.getFieldsValue().password;
 		console.log("e");
 		if(name=="123"&&psd=="123"){
-        //跳转主页面
+				//跳转主页面
+				this.props.history.push("/index");
 		}else{
 				//提示
 				this.openNotification();
@@ -44,14 +46,14 @@ class Login extends React.Component {
 							{getFieldDecorator('userName', {
 								rules: [{ required: true, message: 'Please input your username!' }],
 							})(
-								<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+								<Input  placeholder="Username" />
 							)}
 						</FormItem>
 						<FormItem>
 							{getFieldDecorator('password', {
 								rules: [{ required: true, message: 'Please input your password!' }],
 							})(
-								<Input prefix={<Icon type="password" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="password" />
+								<Input  placeholder="password" />
 							)}
 						</FormItem>
 					

@@ -11,7 +11,7 @@ const FormItem = Form.Item;
 class Login extends React.Component {
   componentDidMount() {
     // To disabled submit button at the beginning.
-    this.props.form.validateFields();
+   // this.props.form.validateFields();
   }
 	openNotification = () => {
 		notification.open({
@@ -26,10 +26,13 @@ class Login extends React.Component {
 		console.log("e");
 		if(name=="123"&&psd=="123"){
 				//跳转主页面
+				localStorage.setItem('name',name);
+				localStorage.setItem('token',true);
 				this.props.history.push("/index");
 		}else{
 				//提示
 				this.openNotification();
+				localStorage.setItem('token',false);
 		}
   }
 
@@ -41,24 +44,28 @@ class Login extends React.Component {
 					<p>Welcome to React</p>
 				</div>
 				<div className="loginWrap row" >
-					<Form layout="inline" onSubmit={this.handleSubmit}  className="col-xs-24">
-						<FormItem >
-							{getFieldDecorator('userName', {
-								rules: [{ required: true, message: 'Please input your username!' }],
-							})(
-								<Input  placeholder="Username" />
-							)}
-						</FormItem>
-						<FormItem>
-							{getFieldDecorator('password', {
-								rules: [{ required: true, message: 'Please input your password!' }],
-							})(
-								<Input  placeholder="password" />
-							)}
-						</FormItem>
+				<Form onSubmit={this.handleSubmit} className="login-form">
+					<FormItem>
+						{getFieldDecorator('userName', {
+							rules: [{ required: true, message: 'Please input your username!' }],
+						})(
+							<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+						)}
+					</FormItem>
+					<FormItem>
+						{getFieldDecorator('password', {
+							rules: [{ required: true, message: 'Please input your Password!' }],
+						})(
+							<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+						)}
+					</FormItem>
+					<FormItem>
 					
-						<Button type="primary" htmlType="submit" className="login-form-button">Login</Button>
-					</Form>
+						<Button type="primary" htmlType="submit" className="login-form-button">
+							Log in
+						</Button>
+					</FormItem>
+				</Form>
 		   	</div>
 		  </div>
     );

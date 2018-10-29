@@ -21,7 +21,7 @@
 }
 
 .loginWrap {
-  width: 24%;
+  width: 250px;
   margin: 0 auto;
   border: 1px #ccc solid;
   padding: 2%;
@@ -31,4 +31,8 @@
 
 .loginWrap .loginBtn {
   width: 100%;
+}
+
+.ant-layout-header {
+  padding-left: 20px;
 }

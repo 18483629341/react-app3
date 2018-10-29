@@ -1,0 +1,35 @@
+一、理清项目目录
+     login
+    src>common>pages>login>index.js
+                          +routes.js   中设置路由
+    index.js    中引入routes
+               ReactDOM.render(
+	
+	<div>
+	
+	{routes}
+	
+	</div>
+	, 
+	document.getElementById('root')
+);
+
+。。。antd相关
+     
+     "eject": "react-scripts eject"   
+
+二、配置scss   ->让项目直接让scss的样式能被识别
+   1.eject  工具看到配置文件  
+   需要安装  npm run eject  生成config文件包
+    
+   2.需要安装 node-sass  sass-loader  
+-->react.js是一个不完整的框架
+  3. 安装完后，在config下的文件 webpack.config.dev.js/
+webpack.config.prod.js中添加scss的相关配置
+
+
+
+   withRouter 编程式的导航
+this.props.history.push("/index");
+this.props.history.goBack();
+     

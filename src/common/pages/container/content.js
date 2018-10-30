@@ -1,16 +1,17 @@
 import React from 'react';
-import { Breadcrumb} from 'antd';
-import {BrowserRouter as Router, Route,  Redirect} from "react-router-dom";
+import {BrowserRouter as  Route} from "react-router-dom";
+import {Layout} from "antd";
 import Home from  "../contents/home";
 import Music from  "../contents/music";
-
+const { Content } = Layout;
 class Con extends React.Component {
   render() {
     return (
-      <div>
+      <Content>
+         CON
         <Route path="/index/home" component={Home}></Route>
         <Route path="/index/music" component={Music}></Route>
-      </div>
+      </Content>
 			
     );
   }

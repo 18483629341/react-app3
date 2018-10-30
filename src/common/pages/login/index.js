@@ -24,7 +24,7 @@ class Login extends React.Component {
 		var name=this.props.form.getFieldsValue().userName;
 		var psd=this.props.form.getFieldsValue().password;
 		console.log("e");
-		if(name=="123"&&psd=="123"){
+		if(name==="123"&&psd==="123"){
 				//跳转主页面
 				localStorage.setItem('name',name);
 				localStorage.setItem('token',true);

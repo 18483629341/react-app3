@@ -6,7 +6,7 @@ import Index from  "./pages/container";
 const routes=(
 	<Router>
 	<div>
-	  
+  
 		<Route path="/login" component={LoginPage}></Route>
 		<Route path="/index" component={Index}></Route>
 		

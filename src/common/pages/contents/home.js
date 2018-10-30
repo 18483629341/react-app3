@@ -2,8 +2,31 @@ import React,{Component} from 'react';
 import {Row,Col,Card,Icon} from 'antd';
 import EchartsProjects   from './echartsProjects';
 import EchartsProjects2   from './echartsProjects2';
+//import $ from 'jquery'; //放在全局 request.js中
+import {get ,post}from './../utils/request';
 //const { Footer } = Layout;
 class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      echartData:[]
+    }
+  }
+  getData=()=>{
+    get('/echarts_info').then((res)=>{
+      console.log(res);
+      var data=JSON.parse(res);
+      if(data.code===200){
+        this.setState({echartData:data.result});
+      }
+      }
+    ).catch((error)=>{
+      console.log(error);
+    });
+  }
+  componentDidMount(){
+    this.getData();
+  }
   render() {
     return (
       <div>
@@ -13,7 +36,7 @@ class Home extends Component {
                         <Card>
                             <div className="clear y-center">
                                 <div className="pull-left mr-m">
-                                    <Icon type="heart" className="text-2x text-danger" />
+                                    <Icon type="heart" className="text-2x red-6" />
                                 </div>
                                 <div className="clear">
                                     <div className="text-muted">收藏</div>
@@ -67,7 +90,7 @@ class Home extends Component {
                 <Col xs={24} sm={24} md={24} lg={12}>
                     <div className="cloud-box">
                         <Card className={'no-padding'}>
-                            <EchartsProjects />
+                            <EchartsProjects option={this.state.echartData}/>
                         </Card>
                     </div>
                 </Col>

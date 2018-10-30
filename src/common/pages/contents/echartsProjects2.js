@@ -58,7 +58,7 @@ const option = {
 				})()
 			};
 /*setTimeout(function (){
-	var _ZR = myChart.getZrender();
+	var _ZR = document.getElementById('myChart').getZrender();
 	var TextShape = require('zrender/shape/Text');
 	// 补充千层饼
 	_ZR.addShape(new TextShape({
@@ -86,7 +86,7 @@ const option = {
 */
 									
 const EchartsProjects2=()=>(
-		<ReactEcharts
+		<ReactEcharts 
 		option={option}
 		style={{height:"220px",width:"400px"}}
 

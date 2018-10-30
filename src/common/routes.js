@@ -6,12 +6,12 @@ import Index from  "./pages/container";
 const routes=(
 	<Router>
 	<div>
-		<Route   path="/index" component={Index}></Route>
+		<Route   path="/index/index" component={Index}></Route>
 		<Route   path="/login" component={LoginPage}></Route>
 		<Route  path="/*" render={
 			()=>{
 				if(localStorage.getItem('name')){
-					return <Redirect  to="/index"></Redirect>
+					return <Redirect  to="/index/index"></Redirect>
 				}else{
 					return <Redirect  to="/login"></Redirect>
 				}

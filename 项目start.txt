@@ -33,3 +33,10 @@ webpack.config.prod.js中添加scss的相关配置
 this.props.history.push("/index");
 this.props.history.goBack();
      
+    react  的路由思想
+       route 是一个标签  ，因此可以相互嵌套
+        在content.js里表现不同的内容  index/...
+                          <Route path="/index/music" component={Music}></Route>
+                           <Route path="/index/tools" component={Tools}></Route>   
+code for save    
+ <EchartsProjects />

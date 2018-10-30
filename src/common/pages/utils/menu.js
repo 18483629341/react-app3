@@ -10,7 +10,8 @@ export const MenuData = [
     children: [
       { name: '音乐系列', url: 'music' }, 
     ]
-  }, {
+  },
+   {
     name: '工具模块',
     url: 'tool',
     icon: 'tool',
@@ -33,4 +34,5 @@ export const MenuData = [
     children: [
       { name: '搜索引擎', url: 'searchEngine' },
     ],
-  }]
+  }
+]

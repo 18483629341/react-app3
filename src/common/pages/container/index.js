@@ -7,7 +7,7 @@ import Con from "./content";
 import {MenuData} from './../utils/menu';
 import './index.css';
 import { Layout, Menu, Icon } from 'antd';
-const { Sider } = Layout;
+const { Sider,Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class SiderDemo extends React.Component {
@@ -26,12 +26,12 @@ class SiderDemo extends React.Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout  className="container">
         <Sider
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
-          
+          className="sider"
         >
           <div className="logo" />
           <Menu
@@ -49,7 +49,7 @@ class SiderDemo extends React.Component {
                 {
                   item.children.map((v,i)=>{
                     return (
-                      <Menu.Item key={v.icon}><Link to="/index/music">{v.name}</Link></Menu.Item>
+                      <Menu.Item key={v.icon}><Link to={`/index/${v.url}`}>{v.name}</Link></Menu.Item>
                     )
                   })
                 }
@@ -60,7 +60,7 @@ class SiderDemo extends React.Component {
               return (
                 <Menu.Item key={item.icon}>
                   <Icon type={item.icon}/>
-                  <span><Link to="/index/home">{item.name}</Link></span>
+                  <span><Link to={`/index/${item.url}`}>{item.name}</Link></span>
                 </Menu.Item>
               )
             }
@@ -71,7 +71,9 @@ class SiderDemo extends React.Component {
         <Layout>
          <Top collapsed={this.state.collapsed} toggle={this.toggle} history={this.props.history}></Top>
          <Con></Con>
-          
+         <Footer style={{ textAlign: 'center' }}>
+         12321432432532
+        </Footer>
         </Layout>
         
       </Layout>

@@ -28,7 +28,7 @@ class Login extends React.Component {
 				//跳转主页面
 				localStorage.setItem('name',name);
 				localStorage.setItem('token',true);
-				this.props.history.push("/index");
+				this.props.history.push("/index/index");
 		}else{
 				//提示
 				this.openNotification();

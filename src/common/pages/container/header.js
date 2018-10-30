@@ -10,7 +10,10 @@ class Top extends React.Component {
     state ={
       username:localStorage.getItem('name')
     };
-  
+    loginOut= () => {
+     localStorage.removeItem('name');
+     this.props.history.push("/login");
+    }
   render() {
     return (
       <Header style={{ background: '#fff', padding: 0 }}>
@@ -26,7 +29,7 @@ class Top extends React.Component {
           className="LoginMenu"
         >
           <SubMenu key="sub1" title={<span><Icon type="user" /><span>{this.state.name}123</span></span>}>
-            <Menu.Item key="5" className=""><Link to="/login">退出</Link></Menu.Item>
+            <Menu.Item key="5" className=""><span onClick={this.loginOut}>退出</span></Menu.Item>
            
           </SubMenu>
           

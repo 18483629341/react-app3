@@ -1,12 +1,17 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Content } = Layout;
+import { Breadcrumb} from 'antd';
+import {BrowserRouter as Router, Route,  Redirect} from "react-router-dom";
+import Home from  "../contents/home";
+import Music from  "../contents/music";
+
 class Con extends React.Component {
   render() {
     return (
-			<Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-            Content
-          </Content>
+      <div>
+        <Route path="/index/home" component={Home}></Route>
+        <Route path="/index/music" component={Music}></Route>
+      </div>
+			
     );
   }
 }

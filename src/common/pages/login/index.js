@@ -1,8 +1,8 @@
 
 import React from 'react';
 //import ReactDOM from 'react-dom';
-import { Form, Icon, Input ,Button,notification ,row,col} from 'antd';
-import { withRouter } from "react-router-dom"; 
+import { Form, Icon, Input ,Button,notification } from 'antd';
+//import { withRouter } from "react-router-dom"; 
 import './index.css';
 const FormItem = Form.Item;
 

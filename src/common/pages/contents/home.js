@@ -3,7 +3,7 @@ import {Row,Col,Card,Icon} from 'antd';
 import EchartsProjects   from './echartsProjects';
 import EchartsProjects2   from './echartsProjects2';
 //import $ from 'jquery'; //放在全局 request.js中
-import {get ,post}from './../utils/request';
+import {get }from './../utils/request';
 //const { Footer } = Layout;
 class Home extends Component {
   constructor(props){
@@ -25,7 +25,7 @@ class Home extends Component {
     });
   }
   componentDidMount(){
-    this.getData();
+    //this.getData();
   }
   render() {
     return (

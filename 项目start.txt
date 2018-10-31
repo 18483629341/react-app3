@@ -37,6 +37,21 @@ this.props.history.goBack();
        route 是一个标签  ，因此可以相互嵌套
         在content.js里表现不同的内容  index/...
                           <Route path="/index/music" component={Music}></Route>
-                           <Route path="/index/tools" component={Tools}></Route>   
+                           <Route path="/index/tools" component={Tools}></Route>
+ 安装echarts  
+  cnpm install echarts-for-react --save
+    cnpm install echarts  --save
+安装jquery
+   cnpm install jquery --save
+  主路由控制
+    <Route  path="/*" render={
+			()=>{
+				if(localStorage.getItem('name')){
+					return <Redirect  to="/index/index"></Redirect>
+				}else{
+					return <Redirect  to="/login"></Redirect>
+				}
+			}
+		}></Route>
 code for save    
  <EchartsProjects />

@@ -16,7 +16,7 @@ class Con extends Component {
     return (
       <Content style={{ margin: '24px 16px 0' }}>
         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-          <Route path="/index/index" component={Home}></Route>
+          <Route  exact path="/index/index" component={Home}></Route>
           <Route path="/index/music" component={Music}></Route>
           <Route path="/index/tools" component={Tools}></Route>
           <Route path="/index/editor" component={Editor}></Route>

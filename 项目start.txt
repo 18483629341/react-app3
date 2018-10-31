@@ -52,6 +52,24 @@ this.props.history.goBack();
 					return <Redirect  to="/login"></Redirect>
 				}
 			}
-		}></Route>
+  }></Route>
+
+fetchJsonp   跨域请求  基于ES6的promise
+       cnpm install fetch-jsonp --save
+    import {fetchJsonp} from "fetch-jsonp";
+    fetchJsonp(`http://tingapi.ting.baidu.com/v1/restserver/ting?xml&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=${typeId}&size=100&offset=0`,{
+              method:"GET"
+  })
+  .then((res)=>{
+    return res.json();
+  }) 
+  .then((res)=>{
+    console.log(res);
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+  给table的数据中每组添加一项序号
+     this.state.Tdata.map((item,index)=>({...item,num:index+1}))
 code for save    
  <EchartsProjects />

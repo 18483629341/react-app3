@@ -10,7 +10,7 @@ const routes=(
 		<Route   path="/login" component={LoginPage}></Route>
 		<Route  path="/*" render={
 			()=>{
-				if(localStorage.getItem('name')){
+				if(sessionStorage.getItem('name')){
 					return <Redirect  to="/index/index"></Redirect>
 				}else{
 					return <Redirect  to="/login"></Redirect>

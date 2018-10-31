@@ -26,13 +26,13 @@ class Login extends React.Component {
 		console.log("e");
 		if(name==="123"&&psd==="123"){
 				//跳转主页面
-				localStorage.setItem('name',name);
-				localStorage.setItem('token',true);
+				sessionStorage.setItem('name',name);
+				sessionStorage.setItem('token',true);
 				this.props.history.push("/index/index");
 		}else{
 				//提示
 				this.openNotification();
-				localStorage.setItem('token',false);
+				sessionStorage.setItem('token',false);
 		}
   }
 

@@ -8,10 +8,10 @@ const SubMenu = Menu.SubMenu;
 class Top extends React.Component {
   
     state ={
-      username:localStorage.getItem('name')
+      username:sessionStorage.getItem('name')
     };
     loginOut= () => {
-     localStorage.removeItem('name');
+     sessionStorage.removeItem('name');
      this.props.history.push("/login");
     }
   render() {

@@ -1,13 +1,15 @@
 import React,{Component} from 'react';
-import { Table,Select} from 'antd';
+import { Table} from 'antd';
 import fetchJsonp from "fetch-jsonp";
+import Search from "./components/search";
 //const { Footer } = Layout;
-const Option = Select.Option;
+
 class Music extends Component {
 constructor(props){
   super(props);
   this.state={
-    Tdata:[]
+    Tdata:[],
+    loading:true
   }
 }
 componentDidMount(){
@@ -23,6 +25,7 @@ getData=(typeId)=>{
   .then((res)=>{
     
     var list=res.song_list;
+    //list=Array.from(new Set(list));
     var arr=[];
     list.map((item,index)=>{
       var obj={};
@@ -35,9 +38,11 @@ getData=(typeId)=>{
       obj['publishtime']=item.publishtime;
       arr.push(obj);
     })
+    
     console.log(arr);
     this.setState({
-      Tdata:arr
+      Tdata:arr,
+      loading:false
     })
   })
   .catch((error)=>{
@@ -84,41 +89,18 @@ getData=(typeId)=>{
         name: record.name,
       }),*/
     }
-    const options=[
-      {name:"Jack",value:"Jack"},
-      {name:"Lucy",value:"Lucy"},
-      {name:"yiminghe",value:"yiminghe"}
-    ];
-    function handleChange(value) {
-      console.log(`selected ${value}`);
-    }
     
-    function handleBlur() {
-      console.log('blur');
-    }
-    
-    function handleFocus() {
-      console.log('focus');
-    }
     return (
       <div>
-      <Select 
-        showSearch
-          style={{ width: 200 }}
-          placeholder="Select a person"
-          optionFilterProp="children"
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-        {
-          options.map((item,i)=>(
-            <Option value={item.value}>{item.name}</Option>
-          ))
-        }  
-      </Select>
-        <Table rowSelection={rowSelection}  dataSource={this.state.Tdata.map((item,index)=>({...item,num:index+1}))} columns={columns} />
-
+        <Search lists={this.state.Tdata}/>
+        <Table 
+        rowSelection={rowSelection}  
+        dataSource={this.state.Tdata} 
+        columns={columns}
+        loading={this.state.loading} 
+        />
+        {//加上序号：this.state.Tdata.map((item,index)=>({...item,num:index+1}))
+        }
       </div>
 		
     );

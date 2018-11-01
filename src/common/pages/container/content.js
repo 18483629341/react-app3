@@ -3,8 +3,8 @@ import {BrowserRouter as  Router,Route} from "react-router-dom";
 //Router  在此处绝对不能删除
 import {Layout} from "antd";
 import Home from  "../contents/home";
-import Music from  "../contents/music";
-import Tools from  "../contents/tools";
+import Music from  "../contents/music/music";
+import Tools from  "../contents/tools/tools";
 import Editor from  "../contents/editor";
 import TodoList from  "../contents/todoList";
 import Album from  "../contents/album";

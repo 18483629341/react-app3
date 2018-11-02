@@ -1,54 +1,57 @@
 import React,{Component} from 'react';
-import { Table} from 'antd';
+import { Table,Select} from 'antd';
 import fetchJsonp from "fetch-jsonp";
-import Search from "./components/search";
+//import Search from "./components/search";
 //const { Footer } = Layout;
-
+const Option = Select.Option;
 class Music extends Component {
-constructor(props){
-  super(props);
-  this.state={
-    Tdata:[],
-    loading:true
+  constructor(props){
+    super(props);
+    this.state={
+      Tdata:[],
+      loading:true
+    }
   }
-}
-componentDidMount(){
-  this.getData('2')
-}
-getData=(typeId)=>{
-  fetchJsonp(`http://tingapi.ting.baidu.com/v1/restserver/ting?xml&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=${typeId}&size=100&offset=0`,{
-              method:"GET"
-  })
-  .then((res)=>{
-    return res.json();
-  }) 
-  .then((res)=>{
-    
-    var list=res.song_list;
-    //list=Array.from(new Set(list));
-    var arr=[];
-    list.map((item,index)=>{
-      var obj={};
-     // obj['num']=index+1;
-      obj['key']=item.artist_id;
-      obj['title']=item.album_title;      ;
-      obj['author']=item.author;
-      obj['country']=item.country;
-      obj['language']=item.language;
-      obj['publishtime']=item.publishtime;
-      arr.push(obj);
+  componentDidMount(){
+    this.getData('2')
+  }
+  handleChange(value){
+    this.getData(value);
+  }
+  getData=(typeId)=>{
+    fetchJsonp(`http://tingapi.ting.baidu.com/v1/restserver/ting?xml&calback=&from=webapp_music&method=baidu.ting.billboard.billList&type=${typeId}&size=100&offset=0`,{
+                method:"GET"
     })
-    
-    console.log(arr);
-    this.setState({
-      Tdata:arr,
-      loading:false
+    .then((res)=>{
+      return res.json();
+    }) 
+    .then((res)=>{
+      
+      var list=res.song_list;
+      //list=Array.from(new Set(list));
+      var arr=[];
+      list.map((item,index)=>{
+        var obj={};
+      // obj['num']=index+1;
+        obj['key']=item.artist_id;
+        obj['title']=item.album_title;      ;
+        obj['author']=item.author;
+        obj['country']=item.country;
+        obj['language']=item.language;
+        obj['publishtime']=item.publishtime;
+        arr.push(obj);
+      })
+      
+      console.log(arr);
+      this.setState({
+        Tdata:arr,
+        loading:false
+      })
     })
-  })
-  .catch((error)=>{
-    console.log(error);
-  })
-}
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
 
   render() {
     //const dataSource =[];
@@ -89,10 +92,15 @@ getData=(typeId)=>{
         name: record.name,
       }),*/
     }
-    
+    const data = [{name:'热歌榜',id:2},{name:'新歌榜',id:1},{name:'摇滚榜',id:11},{name:'爵士',id:12},{name:'流行',id:16}];
     return (
+      
       <div>
-        <Search lists={this.state.Tdata}/>
+        <Select defaultValue={data[0].name} style={{ width: 120,marginBottom:20 }} onChange={(value)=>this.handleChange(value)}>
+          {
+            data.map((item,index)=><Option value={item.id} key={index}>{item.name}</Option>)
+          }
+        </Select>
         <Table 
         rowSelection={rowSelection}  
         dataSource={this.state.Tdata} 

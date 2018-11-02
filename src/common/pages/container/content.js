@@ -5,7 +5,7 @@ import {Layout} from "antd";
 import Home from  "../contents/home";
 import Music from  "../contents/music/music";
 import Tools from  "../contents/tools/tools";
-import Editor from  "../contents/editor";
+import EditorCom from  "../contents/editor/editor";
 import TodoList from  "../contents/todoList";
 import Album from  "../contents/album";
 import SearchEngine from  "../contents/searchEngine";
@@ -19,7 +19,7 @@ class Con extends Component {
           <Route  exact path="/index/index" component={Home}></Route>
           <Route path="/index/music" component={Music}></Route>
           <Route path="/index/tools" component={Tools}></Route>
-          <Route path="/index/editor" component={Editor}></Route>
+          <Route path="/index/editor" component={EditorCom}></Route>
           <Route path="/index/todoList" component={TodoList}></Route>
           <Route path="/index/album" component={Album}></Route>
           <Route path="/index/searchEngine" component={SearchEngine}></Route>

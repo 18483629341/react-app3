@@ -5,7 +5,7 @@ import House from "./components/house";
 import Health from "./components/health";
 import Age from "./components/age";
 import Work from "./components/work";
-
+import './tools.css'
 const TabPane = Tabs.TabPane;
 //const { Footer } = Layout;
 class Tools extends Component {
@@ -24,44 +24,6 @@ class Tools extends Component {
         <TabPane tab="多大了" key="4"><Age/></TabPane>
         <TabPane tab="施工中" key="5" disabled><Work/></TabPane>
       </Tabs>
-		  </div>
-    );
-  }
-}
-
-
-class ToolsCon2 extends Component {
-  render() {
-    return (
-      <div >
-      ToolsCon2
-		  </div>
-    );
-  }
-}
-class ToolsCon3 extends Component {
-  render() {
-    return (
-      <div >
-      ToolsCon3
-		  </div>
-    );
-  }
-}
-class ToolsCon4 extends Component {
-  render() {
-    return (
-      <div >
-      ToolsCon4
-		  </div>
-    );
-  }
-}
-class ToolsCon5 extends Component {
-  render() {
-    return (
-      <div >
-      ToolsCon5
 		  </div>
     );
   }

@@ -56,10 +56,10 @@ class House extends Component {
         <Col xs={0} sm={0} md={6} lg={8}style={{ marginBottom: 16 }}>
         </Col>
         <Col xs={24} sm={24} md={12} lg={8} style={{ marginBottom: 16 }}>
-          <Input addonBefore="预计房租" addonAfter="￥" defaultValue= {this.state.item} onChange={(event)=>this.changeItem(event)} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="预计年数" addonAfter="￥" defaultValue= {this.state.time} onChange={(event)=>this.changeTime(event)} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="租房合计" addonAfter="￥" defaultValue= {this.state.rent} disabled style={{ marginBottom: 20 }}/>
-          <Input addonBefore="买房合计" addonAfter="￥" defaultValue= {this.state.buy} onChange={(event)=>this.changeBuy(event)} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="预计房租" addonAfter="￥" defaultValue= {this.state.item} onChange={(event)=>this.changeItem(event)} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="预计年数" addonAfter="￥" defaultValue= {this.state.time} onChange={(event)=>this.changeTime(event)} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="租房合计" addonAfter="￥" defaultValue= {this.state.rent} disabled style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="买房合计" addonAfter="￥" defaultValue= {this.state.buy} onChange={(event)=>this.changeBuy(event)} style={{ marginBottom: 20 }}/>
           <p >{this.message}</p>
         </Col>
         <Col xs={0} sm={0} md={6} lg={8} style={{ marginBottom: 16 }}>

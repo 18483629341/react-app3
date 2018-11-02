@@ -71,5 +71,13 @@ fetchJsonp   跨域请求  基于ES6的promise
   })
   给table的数据中每组添加一项序号
      this.state.Tdata.map((item,index)=>({...item,num:index+1}))
-code for save    
- <EchartsProjects />
+  坑17 setState此方法的执行时异步的，有些数据处理需要回调
+      this.setState({buy:b},()=>{this.changeBalace()})
+  富文本编辑器    react-draft-wysiwyg  
+      import {Editor} from "react-draft-wysiwyg";
+      import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+     需要另外安装   cnpm install react-draft-wysiwyg  --save
+     富文本里的文字，是不能传输给后台的，需要引入解析的依赖
+               cnpm install draftjs-to-html  --save
+               cnpm install draftjs-to-markdown  --save
+       

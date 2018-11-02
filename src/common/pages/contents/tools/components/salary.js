@@ -32,20 +32,40 @@ class Salary extends Component {
 		 });
 		 message.success('工资过万喽！');
 	 }
-		let forOldV=d*this.state.rates.forOld;
-		let forSurV=d*this.state.rates.forSur;
-		let forFiredV=d*this.state.rates.forFired;
-		let forHouseV=d*this.state.rates.forHouse;
-		let salary=d-forOldV-forSurV-forFiredV-forHouseV;
-		let taxV=salary*this.state.rates.tax;
-		let taxSalary=salary-taxV;
+		let forOldV=(d*this.state.rates.forOld).toFixed(2);
+		let forSurV=(d*this.state.rates.forSur).toFixed(2);
+		let forFiredV=(d*this.state.rates.forFired).toFixed(2);
+		let forHouseV=(d*this.state.rates.forHouse).toFixed(2);
+    let salary=(d-forOldV-forSurV-forFiredV-forHouseV).toFixed(2);
+    const taxBase = salary-5000;
+    let tax;
+    if(taxBase <= 0) {
+      tax = 0;
+    } else if(taxBase > 0 && taxBase <= 1500) {
+      tax = taxBase*3/100;
+    } else if(taxBase > 1500 && taxBase <= 4500) {
+      tax = taxBase*10/100-105;
+    } else if(taxBase > 4500 && taxBase <= 9000) {
+      tax = taxBase*20/100-555;
+    } else if(taxBase > 9000 && taxBase <= 35000) {
+      tax = taxBase*25/100-1005;
+    } else if(taxBase > 35000 && taxBase <= 55000) {
+      tax = taxBase*30/100-2775;
+    } else if(taxBase > 55000 && taxBase <= 80000) {
+      tax = taxBase*35/100-5505;
+    } else if(taxBase > 80000) {
+      tax = taxBase*45/100-13505;
+    }
+    const cleanTax = tax.toFixed(2);
+		
+		let taxSalary=(salary-cleanTax).toFixed(2);
 		this.setState({
       forOldV:forOldV,
       forSurV:forSurV,
       forFiredV:forFiredV,
       forHouseV:forHouseV, 
       salary:salary,
-      taxV:taxV,
+      taxV:cleanTax,
       taxSalary:taxSalary
 		})
   }
@@ -56,14 +76,14 @@ class Salary extends Component {
         <Col xs={0} sm={0} md={6} lg={8}style={{ marginBottom: 16 }}>
         </Col>
         <Col xs={24} sm={24} md={12} lg={8} style={{ marginBottom: 16 }}>
-          <Input addonBefore="应发工资" addonAfter="￥" defaultValue= {this.state.wage} onChange={(event)=>this.change(event)} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="养老保险" addonAfter="￥" defaultValue= {this.state.forOldV} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="医疗保险" addonAfter="￥" defaultValue= {this.state.forSurV} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="失业保险" addonAfter="￥" defaultValue= {this.state.forFiredV} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="住房公积" addonAfter="￥" defaultValue= {this.state.forHouseV} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="税前工资" addonAfter="￥" defaultValue= {this.state.salary} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="个人税收" addonAfter="￥" defaultValue= {this.state.taxV} style={{ marginBottom: 20 }}/>
-          <Input addonBefore="税后工资" addonAfter="￥" defaultValue= {this.state.taxSalary} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="应发工资" addonAfter="￥" defaultValue= {this.state.wage} onChange={(event)=>this.change(event)} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="养老保险" addonAfter="￥" defaultValue= {this.state.forOldV} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="医疗保险" addonAfter="￥" defaultValue= {this.state.forSurV} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="失业保险" addonAfter="￥" defaultValue= {this.state.forFiredV} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="住房公积" addonAfter="￥" defaultValue= {this.state.forHouseV} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="税前工资" addonAfter="￥" defaultValue= {this.state.salary} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="个人税收" addonAfter="￥" defaultValue= {this.state.taxV} style={{ marginBottom: 20 }}/>
+          <Input type="number" addonBefore="税后工资" addonAfter="￥" defaultValue= {this.state.taxSalary} style={{ marginBottom: 20 }}/>
         </Col>
         <Col xs={0} sm={0} md={6} lg={8} style={{ marginBottom: 16 }}>
         </Col>
